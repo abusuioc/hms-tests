@@ -1,2 +1,2 @@
 # hms-tests
-test HMS kits
+Test various Huawei Mobile Services kits.
