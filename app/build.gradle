@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.huawei.hms:location:4.0.3.303'
     implementation 'com.google.android.gms:play-services-base:17.3.0'
     implementation 'com.google.android.gms:play-services-identity:17.0.0'
+    implementation 'com.github.abusuioc:hms-gms-wrapper-location:master-SNAPSHOT'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
