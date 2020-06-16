@@ -2,8 +2,9 @@
     <string name="app_name">HMS Demos</string>
     <string name="gms">GMS</string>
     <string name="hms">HMS</string>
-    <string name="currentLocation_lastKnownLocation">Last known location: %1$s</string>
-    <string name="currentLocation_permissionError">Location permission needed to demo the current location.</string>
-    <string name="currentLocation_updatedLocations">Updated locations: %1$s</string>
-    <string name="currentLocation_noLocations">no_location</string>
+    <string name="locationdemo_lastKnownLocation">Last known location: %1$s</string>
+    <string name="locationdemo_permissionError">Location permission needed to demo the current location.</string>
+    <string name="locationdemo_updatedLocations">Updated locations: %1$s</string>
+    <string name="locationdemo_noLocations">no_location</string>
+    <string name="locationdemo_requestPermission">Request it!</string>
 </resources>
