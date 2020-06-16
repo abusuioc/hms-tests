@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HMS Demos</string>
+    <string name="app_name">Mobile services demos</string>
     <string name="gms">GMS</string>
     <string name="hms">HMS</string>
     <string name="locationdemo_lastKnownLocation">Last known location: %1$s</string>
