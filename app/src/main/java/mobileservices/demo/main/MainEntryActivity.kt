@@ -1,12 +1,10 @@
-package ch.busu.hmstests.main
+package mobileservices.demo.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import ch.busu.hmstests.arch.BaseActivity
-import ch.busu.hmstests.arch.exhaustive
-import ch.busu.hmstests.databinding.ActivityMainBinding
-import mobileservices.detector.MobileServicesDetector
+import mobileservices.demo.arch.BaseActivity
+import mobileservices.demo.arch.exhaustive
+import mobileservices.demo.databinding.ActivityMainBinding
 
 class MainEntryActivity :
     BaseActivity<MainEntryViewState, MainEntryViewEffects, MainEntryEvent, MainEntryViewModel>() {

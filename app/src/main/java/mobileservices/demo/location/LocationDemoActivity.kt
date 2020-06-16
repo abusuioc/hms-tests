@@ -1,12 +1,12 @@
-package ch.busu.hmstests.location
+package mobileservices.demo.location
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import ch.busu.hmstests.R
-import ch.busu.hmstests.arch.BaseActivity
-import ch.busu.hmstests.arch.exhaustive
-import ch.busu.hmstests.databinding.ActivityLocationdemoBinding
+import mobileservices.demo.R
+import mobileservices.demo.arch.BaseActivity
+import mobileservices.demo.arch.exhaustive
+import mobileservices.demo.databinding.ActivityLocationdemoBinding
 import com.google.android.material.snackbar.Snackbar
 
 class LocationDemoActivity :

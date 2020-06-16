@@ -1,7 +1,6 @@
-package ch.busu.hmstests.arch
+package mobileservices.demo.arch
 
 import android.app.Application
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.annotation.CallSuper
 import androidx.lifecycle.AndroidViewModel

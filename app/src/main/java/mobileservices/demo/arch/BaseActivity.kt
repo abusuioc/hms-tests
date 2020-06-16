@@ -1,4 +1,4 @@
-package ch.busu.hmstests.arch
+package mobileservices.demo.arch
 
 import android.os.Bundle
 import android.util.Log

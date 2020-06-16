@@ -1,4 +1,4 @@
-package ch.busu.hmstests.arch
+package mobileservices.demo.arch
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

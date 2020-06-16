@@ -1,4 +1,4 @@
-package ch.busu.hmstests.arch
+package mobileservices.demo.arch
 
 val Any.TAG: String
     get() {

@@ -1,4 +1,4 @@
-package ch.busu.hmstests.location
+package mobileservices.demo.location
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -7,7 +7,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.busu.hmstests.arch.TAG
+import mobileservices.demo.arch.TAG
 import mobileservices.location.*
 
 class LocationRepository(

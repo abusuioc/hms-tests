@@ -1,13 +1,13 @@
-package ch.busu.hmstests.location
+package mobileservices.demo.location
 
 import android.app.Application
 import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import ch.busu.hmstests.arch.BaseViewModel
-import ch.busu.hmstests.arch.TAG
-import ch.busu.hmstests.arch.exhaustive
+import mobileservices.demo.arch.BaseViewModel
+import mobileservices.demo.arch.TAG
+import mobileservices.demo.arch.exhaustive
 
 class LocationDemoViewModel(application: Application) :
     BaseViewModel<LocationDemoViewState, LocationDemoViewEffects, LocationDemoEvent>(application) {

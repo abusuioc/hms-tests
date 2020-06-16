@@ -1,4 +1,4 @@
-package ch.busu.hmstests.main
+package mobileservices.demo.main
 
 sealed class MainEntryViewState {
     data class Default(val isGmsAvailable: Boolean, val isHmsAvailable: Boolean) : MainEntryViewState()

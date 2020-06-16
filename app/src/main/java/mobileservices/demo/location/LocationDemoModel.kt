@@ -1,4 +1,4 @@
-package ch.busu.hmstests.location
+package mobileservices.demo.location
 
 import android.location.Location
 import mobileservices.location.LocationResult

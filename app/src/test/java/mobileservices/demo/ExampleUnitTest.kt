@@ -1,4 +1,4 @@
-package ch.busu.hmstests
+package mobileservices.demo
 
 import org.junit.Test
 

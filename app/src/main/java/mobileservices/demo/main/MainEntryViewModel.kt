@@ -1,10 +1,10 @@
-package ch.busu.hmstests.main
+package mobileservices.demo.main
 
 import android.app.Application
 import android.content.Intent
-import ch.busu.hmstests.arch.BaseViewModel
-import ch.busu.hmstests.arch.exhaustive
-import ch.busu.hmstests.location.LocationDemoActivity
+import mobileservices.demo.arch.BaseViewModel
+import mobileservices.demo.arch.exhaustive
+import mobileservices.demo.location.LocationDemoActivity
 import mobileservices.detector.MobileServicesDetector
 
 class MainEntryViewModel(application: Application) :
