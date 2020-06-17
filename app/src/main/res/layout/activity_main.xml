@@ -23,6 +23,14 @@
             android:text="Launch Location Demo"
             android:id="@+id/button_launchLocationDemo"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:enabled="false"
+            android:text="Further demos (under construction)"
+            android:id="@+id/button_launchOtherDemos"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -30,7 +38,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,9 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:enabled="true"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
+            android:enabled="false"
             android:text="@string/gms" />
 
         <CheckBox
@@ -53,9 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:enabled="true"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
+            android:enabled="false"
             android:text="@string/hms" />
 
     </LinearLayout>

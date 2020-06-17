@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="mobileservices.demo.location.LocationDemoActivity" />
+        <activity android:name="mobileservices.demo.location.LocationDemoActivity"
+            android:label="@string/locationdemo_title"/>
     </application>
 
 </manifest>
