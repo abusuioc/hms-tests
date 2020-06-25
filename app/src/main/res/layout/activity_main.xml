@@ -20,15 +20,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Launch Location Demo"
+            android:text="@string/main_locationdemo_button"
             android:id="@+id/button_launchLocationDemo"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:text="@string/main_licensecheck_button"
+            android:id="@+id/button_launchLicensingDemo"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:enabled="false"
-            android:text="Further demos (under construction)"
+            android:text="@string/main_further_demos"
             android:id="@+id/button_launchOtherDemos"/>
 
     </LinearLayout>
@@ -45,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="This device has:" />
+            android:text="@string/main_this_device_has" />
 
         <CheckBox
             android:id="@+id/check_hasGMS"

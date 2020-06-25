@@ -33,7 +33,7 @@ class LocationRepository(
         LocationRequest.create()?.apply {
             interval = 10000
             fastestInterval = 5000
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            priority = LocationRequest.PRIORITY_HD_ACCURACY
         }
 
     fun startLocationUpdates() {

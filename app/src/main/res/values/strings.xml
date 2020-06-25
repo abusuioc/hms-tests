@@ -2,10 +2,20 @@
     <string name="app_name">Mobile services demos</string>
     <string name="gms">GMS</string>
     <string name="hms">HMS</string>
+
+    <string name="main_this_device_has">This device has:</string>
+    <string name="main_locationdemo_button">Launch Location Demo</string>
+    <string name="main_licensecheck_button">Check license (HMS only)</string>
+    <string name="main_further_demos">Further demos (under construction)</string>
+
     <string name="locationdemo_lastKnownLocation">Last known location: %1$s</string>
     <string name="locationdemo_permissionError">Location permission needed to demo the current location.</string>
     <string name="locationdemo_updatedLocations">Updated locations: %1$s</string>
     <string name="locationdemo_noLocations">no_location</string>
     <string name="locationdemo_requestPermission">Request it!</string>
     <string name="locationdemo_title">Location demo</string>
+    <string name="licensecheck_doCheck">Do check!</string>
+    <string name="licensecheck_checking">Checking…</string>
+    <string name="licensecheck_result">Successful? %1$s</string>
+    <string name="licensecheck_title">Check license</string>
 </resources>

@@ -20,6 +20,8 @@
 
         <activity android:name="mobileservices.demo.location.LocationDemoActivity"
             android:label="@string/locationdemo_title"/>
+        <activity android:name="mobileservices.demo.licensing.LicenseCheckActivity"
+            android:label="@string/licensecheck_title"/>
     </application>
 
 </manifest>

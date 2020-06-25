@@ -26,6 +26,14 @@ class MainEntryActivity :
             )
         }
 
+        binding.buttonLaunchLicensingDemo.setOnClickListener {
+            viewModel.process(
+                MainEntryEvent.OnStartLicenseCheckDemo(
+                    this
+                )
+            )
+        }
+
         setContentView(binding.root)
     }
 
@@ -34,6 +42,8 @@ class MainEntryActivity :
             is MainEntryViewState.Default -> {
                 binding.checkHasGMS.isChecked = viewState.isGmsAvailable
                 binding.checkHasHMS.isChecked = viewState.isHmsAvailable
+
+                binding.buttonLaunchLicensingDemo.isEnabled = viewState.isHmsAvailable
             }
         }.exhaustive
     }
