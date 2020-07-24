@@ -52,6 +52,7 @@ dependencies {
 
     implementation 'com.github.abusuioc:hms-gms-wrapper-location:98de4a686f'
     implementation 'com.github.abusuioc:hms-agc-drm-license-check:2.5.2.300'
+    implementation 'com.huawei.hms:audiokit-player:1.0.0.302'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

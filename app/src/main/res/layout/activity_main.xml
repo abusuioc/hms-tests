@@ -34,6 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:text="@string/main_audioplayback_button"
+            android:id="@+id/button_launchAudioPlaybacksDemo"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:enabled="false"
             android:text="@string/main_further_demos"
             android:id="@+id/button_launchOtherDemos"/>

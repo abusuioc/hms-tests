@@ -22,6 +22,8 @@
             android:label="@string/locationdemo_title"/>
         <activity android:name="mobileservices.demo.licensing.LicenseCheckActivity"
             android:label="@string/licensecheck_title"/>
+        <activity android:name="mobileservices.demo.audio.playback.PlaybackDemoActivity"
+            android:label="@string/audioplayback_title"/>
     </application>
 
 </manifest>

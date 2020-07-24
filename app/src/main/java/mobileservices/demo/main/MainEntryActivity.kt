@@ -34,6 +34,14 @@ class MainEntryActivity :
             )
         }
 
+        binding.buttonLaunchAudioPlaybacksDemo.setOnClickListener {
+            viewModel.process(
+                MainEntryEvent.OnStartAudioPlaybackDemo(
+                    this
+                )
+            )
+        }
+
         setContentView(binding.root)
     }
 
@@ -44,6 +52,7 @@ class MainEntryActivity :
                 binding.checkHasHMS.isChecked = viewState.isHmsAvailable
 
                 binding.buttonLaunchLicensingDemo.isEnabled = viewState.isHmsAvailable
+                binding.buttonLaunchAudioPlaybacksDemo.isEnabled = viewState.isHmsAvailable
             }
         }.exhaustive
     }

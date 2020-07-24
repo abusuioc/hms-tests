@@ -6,6 +6,7 @@
     <string name="main_this_device_has">This device has:</string>
     <string name="main_locationdemo_button">Launch Location Demo</string>
     <string name="main_licensecheck_button">Check license (HMS only)</string>
+    <string name="main_audioplayback_button">Audio HD playback (HMS only)</string>
     <string name="main_further_demos">Further demos (under construction)</string>
 
     <string name="locationdemo_lastKnownLocation">Last known location: %1$s</string>
@@ -18,4 +19,12 @@
     <string name="licensecheck_checking">Checking…</string>
     <string name="licensecheck_result">Successful? %1$s</string>
     <string name="licensecheck_title">Check license</string>
+
+    <string name="audioplayback_title">Audio playback</string>
+    <string name="audioplayback_play">Play</string>
+    <string name="audioplayback_status">Player status: %1$s</string>
+    <string name="audioplayback_status_error">error - %1$s</string>
+    <string name="audioplayback_status_ready">ready!</string>
+    <string name="audioplayback_status_initializing">initializing…</string>
+
 </resources>
