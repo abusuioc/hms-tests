@@ -1,6 +1,7 @@
 package mobileservices.demo.audio.playback
 
 import android.app.Application
+import com.huawei.hms.api.bean.HwAudioPlayItem
 import com.huawei.hms.audiokit.player.callback.HwAudioConfigCallBack
 import com.huawei.hms.audiokit.player.manager.*
 import kotlin.coroutines.resume
@@ -53,16 +54,18 @@ class PlaybackRepository(
         }
     }
 
-    val song_TrondheimSolistene_BrittenFrankBridgeVariationsRomance =
-        mapOf(
-            Quality.HiRes to "http://www.lindberg.no/hires/test/2L-125_stereo-352k-24b_04.flac",
-            Quality.OriginalCd to "http://www.lindberg.no/hires/test/2L-125_stereo-44k-16b_04.flac"
-        )
-
-
-    enum class Quality(val description: String) {
-        HiRes("Stereo 24BIT/352.8kHz"),
-        OriginalCd("Original CD 16BIT/44kHz")
+    fun playRemoteSong(url: String) {
+        val item = HwAudioPlayItem().apply {
+            audioTitle = url
+            audioId = url.hashCode().toString()
+            setOnline(1)
+            onlinePath = url
+        }
+        val playItemList = listOf(item)
+        audioPlayerManager.playList(playItemList, 0, 0)
     }
 
+    fun stopPlayback() {
+        audioPlayerManager.stop()
+    }
 }

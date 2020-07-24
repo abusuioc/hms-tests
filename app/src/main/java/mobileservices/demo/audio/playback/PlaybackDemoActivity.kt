@@ -17,31 +17,44 @@ class PlaybackDemoActivity :
         super.onCreate(savedInstanceState)
         binding = ActivityPlaybackdemoBinding.inflate(layoutInflater)
 
+        binding.buttonPlayStop.setOnClickListener {
+            viewModel.process(PlaybackDemoEvent.PlayStopSongAtIndex(0))
+        }
+
         setContentView(binding.root)
     }
 
     override fun renderViewState(viewState: PlaybackDemoViewState) {
         when (viewState) {
             PlaybackDemoViewState.InitPlayer -> {
-                binding.buttonPlay.isEnabled = false
+                binding.buttonPlayStop.isEnabled = false
                 binding.textPlayerStatus.text = getString(
                     R.string.audioplayback_status,
                     getString(R.string.audioplayback_status_initializing)
                 )
             }
             PlaybackDemoViewState.PlayerReady -> {
-                binding.buttonPlay.isEnabled = true
+                binding.buttonPlayStop.isEnabled = true
+                binding.buttonPlayStop.setText(R.string.audioplayback_play)
                 binding.textPlayerStatus.text = getString(
                     R.string.audioplayback_status,
                     getString(R.string.audioplayback_status_ready)
                 )
             }
             is PlaybackDemoViewState.PlayerInitError -> {
-                binding.buttonPlay.isEnabled = false
+                binding.buttonPlayStop.isEnabled = false
                 binding.textPlayerStatus.text = getString(
                     R.string.audioplayback_status,
                     getString(R.string.audioplayback_status_error, viewState.exception.toString())
                 )
+            }
+            is PlaybackDemoViewState.PlayingSongAtIndex -> {
+                binding.buttonPlayStop.isEnabled = true
+                binding.textPlayerStatus.text = getString(
+                    R.string.audioplayback_status,
+                    getString(R.string.audioplayback_status_playing, viewState.title)
+                )
+                binding.buttonPlayStop.setText(R.string.audioplayback_stop)
             }
         }.exhaustive
     }

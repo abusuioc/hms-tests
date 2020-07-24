@@ -22,9 +22,11 @@
 
     <string name="audioplayback_title">Audio playback</string>
     <string name="audioplayback_play">Play</string>
+    <string name="audioplayback_stop">Stop</string>
     <string name="audioplayback_status">Player status: %1$s</string>
     <string name="audioplayback_status_error">error - %1$s</string>
     <string name="audioplayback_status_ready">ready!</string>
     <string name="audioplayback_status_initializing">initializing…</string>
+    <string name="audioplayback_status_playing">playing - %1$s</string>
 
 </resources>
