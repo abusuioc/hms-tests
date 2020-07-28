@@ -107,15 +107,14 @@ class PlaybackRepository(
         }
     }
 
-    fun playRemoteSong(url: String) {
+    fun playRemoteTrack(url: String) {
         val item = HwAudioPlayItem().apply {
             audioTitle = url
             audioId = url.hashCode().toString()
             setOnline(1)
             onlinePath = url
         }
-        val playItemList = listOf(item)
-        audioPlayerManager.playList(playItemList, 0, 0)
+        audioPlayerManager.playList(listOf(item), 0, 0)
     }
 
     fun stopPlayback() {

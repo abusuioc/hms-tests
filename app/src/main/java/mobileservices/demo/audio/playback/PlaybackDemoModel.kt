@@ -6,7 +6,7 @@ sealed class PlaybackDemoViewState {
     object InitPlayer : PlaybackDemoViewState()
     object PlayerReady : PlaybackDemoViewState()
     class PlayerInitError(val exception: Exception) : PlaybackDemoViewState()
-    class Playing(val song: SongsRepository.Song, val quality: SongsRepository.Quality) :
+    class Playing(val audioTrack: AudioTrackRepository.AudioTrack, val quality: AudioTrackRepository.Quality) :
         PlaybackDemoViewState()
 }
 
@@ -17,6 +17,6 @@ sealed class PlaybackDemoViewEffect {
 }
 
 sealed class PlaybackDemoEvent {
-    class Play(val song: SongsRepository.Song, val quality: SongsRepository.Quality) :
+    class Play(val audioTrack: AudioTrackRepository.AudioTrack, val quality: AudioTrackRepository.Quality) :
         PlaybackDemoEvent()
 }

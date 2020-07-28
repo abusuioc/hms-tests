@@ -10,7 +10,7 @@ import mobileservices.demo.R
 import mobileservices.demo.arch.BaseActivity
 import mobileservices.demo.arch.exhaustive
 import mobileservices.demo.databinding.ActivityPlaybackdemoBinding
-import mobileservices.demo.databinding.ViewPlaybacksongBinding
+import mobileservices.demo.databinding.ViewAudiotrackBinding
 
 
 class PlaybackDemoActivity :
@@ -27,7 +27,7 @@ class PlaybackDemoActivity :
         binding.textPlayerStatus.movementMethod = ScrollingMovementMethod()
 
         setContentView(binding.root)
-        initSongs(viewModel.getSongsList())
+        initAudioTracks(viewModel.getAudioTracks())
     }
 
     override fun renderViewState(viewState: PlaybackDemoViewState) {
@@ -47,8 +47,8 @@ class PlaybackDemoActivity :
             is PlaybackDemoViewState.Playing -> {
                 binding.textPlayerStatus.text = getString(
                     R.string.audioplayback_status_playingIssued,
-                    viewState.song.title,
-                    viewState.song.artist,
+                    viewState.audioTrack.title,
+                    viewState.audioTrack.artist,
                     viewState.quality.description
                 )
             }
@@ -87,36 +87,36 @@ class PlaybackDemoActivity :
         }?.let { binding.textPlayerStatus.append("\n$it") }
     }
 
-    private fun initSongs(songs: List<SongsRepository.Song>) {
-        for (song in songs) {
-            val songLayoutBinding = ViewPlaybacksongBinding.inflate(layoutInflater)
+    private fun initAudioTracks(audioTracks: List<AudioTrackRepository.AudioTrack>) {
+        for (audioTrack in audioTracks) {
+            val audioTrackLayoutBinding = ViewAudiotrackBinding.inflate(layoutInflater)
 
-            songLayoutBinding.textPlaybackSongDetails.text = getString(
-                R.string.audioplayback_song_title,
-                song.title,
-                song.artist,
-                song.interpretation,
-                song.album
+            audioTrackLayoutBinding.textPlaybackAudiotrackDetails.text = getString(
+                R.string.audioplayback_audiotrack_title,
+                audioTrack.title,
+                audioTrack.artist,
+                audioTrack.interpretation,
+                audioTrack.album
             )
 
-            for (qualityToPathPair in song.qualityToPath) {
-                val (songQuality, _) = qualityToPathPair
-                val playSongButton = Button(this).apply {
-                    text = songQuality.toString()
+            for (qualityToPathPair in audioTrack.qualityToPath) {
+                val (audioTrackQuality, _) = qualityToPathPair
+                val playButton = Button(this).apply {
+                    text = audioTrackQuality.toString()
                     setOnClickListener {
-                        viewModel.process(PlaybackDemoEvent.Play(song, songQuality))
+                        viewModel.process(PlaybackDemoEvent.Play(audioTrack, audioTrackQuality))
                     }
                     isDuplicateParentStateEnabled = true
                 }
-                songLayoutBinding.layoutPlaybackSong.addView(
-                    playSongButton,
+                audioTrackLayoutBinding.layoutPlaybackAudiotrack.addView(
+                    playButton,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             }
 
-            binding.layoutPlaybackSongs.addView(
-                songLayoutBinding.root,
+            binding.layoutPlaybackAudiotracks.addView(
+                audioTrackLayoutBinding.root,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )

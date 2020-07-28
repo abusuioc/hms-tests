@@ -10,7 +10,7 @@ class PlaybackDemoViewModel(application: Application) :
     BaseViewModel<PlaybackDemoViewState, PlaybackDemoViewEffect, PlaybackDemoEvent>(application) {
 
     private val playbackRepository = PlaybackRepository(application)
-    private val songsRepository = SongsRepository()
+    private val audioTrackRepository = AudioTrackRepository()
 
     init {
         viewState = PlaybackDemoViewState.InitPlayer
@@ -47,8 +47,8 @@ class PlaybackDemoViewModel(application: Application) :
                 when (viewState) {
                     is PlaybackDemoViewState.Playing,
                     is PlaybackDemoViewState.PlayerReady -> {
-                        playbackRepository.playRemoteSong(viewEvent.song.qualityToPath[viewEvent.quality]!!)
-                        viewState = PlaybackDemoViewState.Playing(viewEvent.song, viewEvent.quality)
+                        playbackRepository.playRemoteTrack(viewEvent.audioTrack.qualityToPath[viewEvent.quality]!!)
+                        viewState = PlaybackDemoViewState.Playing(viewEvent.audioTrack, viewEvent.quality)
                     }
                     is PlaybackDemoViewState.InitPlayer -> viewEffect =
                         PlaybackDemoViewEffect.ErrorPlayerNotReady
@@ -59,7 +59,7 @@ class PlaybackDemoViewModel(application: Application) :
         }.exhaustive
     }
 
-    fun getSongsList() = listOf(songsRepository.song1)
+    fun getAudioTracks() = listOf(audioTrackRepository.audioTrack1)
 
     override fun onCleared() {
         super.onCleared()

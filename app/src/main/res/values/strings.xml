@@ -37,6 +37,6 @@
     <string name="audioplayback_status_completed">completed</string>
     <string name="audioplayback_status_songChanged">song changed to: %1$s</string>
 
-    <string name="audioplayback_song_title">%1$s by %2$s (%3$s)\nfrom album: %4$s</string>
+    <string name="audioplayback_audiotrack_title">%1$s by %2$s (%3$s)\nfrom album: %4$s</string>
 
 </resources>
