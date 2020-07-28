@@ -23,10 +23,20 @@
     <string name="audioplayback_title">Audio playback</string>
     <string name="audioplayback_play">Play</string>
     <string name="audioplayback_stop">Stop</string>
-    <string name="audioplayback_status">Player status: %1$s</string>
-    <string name="audioplayback_status_error">error - %1$s</string>
-    <string name="audioplayback_status_ready">ready!</string>
-    <string name="audioplayback_status_initializing">initializing…</string>
-    <string name="audioplayback_status_playing">playing - %1$s</string>
+    <string name="audioplayback_player_status">Player status</string>
+    <string name="audioplayback_status_error">error: %1$s</string>
+    <string name="audioplayback_status_ready">player initialized</string>
+    <string name="audioplayback_status_notready">cannot perform action: player not ready</string>
+    <string name="audioplayback_status_initializing">player initializing…</string>
+    <string name="audioplayback_status_playingIssued">play: %1$s by %2$s @ %3$s</string>
+    <string name="audioplayback_status_buffering">buffering: %1$d %%</string>
+    <string name="audioplayback_status_stopped">stopped</string>
+    <string name="audioplayback_status_stoppedAndBuffering">stopped and buffering</string>
+    <string name="audioplayback_status_playing">playing</string>
+    <string name="audioplayback_status_playingAndBuffering">playing and buffering</string>
+    <string name="audioplayback_status_completed">completed</string>
+    <string name="audioplayback_status_songChanged">song changed to: %1$s</string>
+
+    <string name="audioplayback_song_title">%1$s by %2$s (%3$s)\nfrom album: %4$s</string>
 
 </resources>

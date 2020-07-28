@@ -23,25 +23,52 @@ class PlaybackDemoViewModel(application: Application) :
                 PlaybackDemoViewState.PlayerInitError(e)
             }
         }
+
+        playbackRepository.playerState().observeForever {
+            when (it) {
+                is PlaybackRepository.PlayerState.PlayingProgress -> {
+                    viewEffect =
+                        PlaybackDemoViewEffect.PlayerProgressUpdate(100.0f * it.currentPosition / it.totalDuration)
+                }
+                is PlaybackRepository.PlayerState.Stopped -> {
+                    viewEffect = PlaybackDemoViewEffect.PlayerProgressUpdate(0.0f)
+                }
+                else -> {
+                    viewEffect = PlaybackDemoViewEffect.PlayerStateChanged(it)
+                }
+            }.exhaustive
+        }
     }
 
     override fun process(viewEvent: PlaybackDemoEvent) {
         super.process(viewEvent)
         when (viewEvent) {
-            is PlaybackDemoEvent.PlayStopSongAtIndex -> {
+            is PlaybackDemoEvent.Play -> {
                 when (viewState) {
-                    is PlaybackDemoViewState.PlayingSongAtIndex -> {
-                        playbackRepository.stopPlayback()
-                        viewState = PlaybackDemoViewState.PlayerReady
-                    }
+                    is PlaybackDemoViewState.Playing,
                     is PlaybackDemoViewState.PlayerReady -> {
-                        playbackRepository.playRemoteSong(songsRepository.song1.qualityToPath[SongsRepository.Quality.CD]!!)
+                        playbackRepository.playRemoteSong(viewEvent.song.qualityToPath[viewEvent.quality]!!)
+                        viewState = PlaybackDemoViewState.Playing(viewEvent.song, viewEvent.quality)
                     }
-                    else -> {
-
-                    }
+                    is PlaybackDemoViewState.InitPlayer -> viewEffect =
+                        PlaybackDemoViewEffect.ErrorPlayerNotReady
+                    is PlaybackDemoViewState.PlayerInitError -> viewEffect =
+                        PlaybackDemoViewEffect.ErrorPlayerNotReady
                 }
             }
         }.exhaustive
+    }
+
+    fun getSongsList() = listOf(songsRepository.song1)
+
+    override fun onCleared() {
+        super.onCleared()
+        when (viewState) {
+            PlaybackDemoViewState.InitPlayer,
+            is PlaybackDemoViewState.PlayerInitError -> {
+                // no need to dispose the player
+            }
+            else -> playbackRepository.dispose()
+        }
     }
 }

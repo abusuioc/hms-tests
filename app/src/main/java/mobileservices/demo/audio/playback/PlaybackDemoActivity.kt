@@ -1,11 +1,17 @@
 package mobileservices.demo.audio.playback
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.view.View.OnTouchListener
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.viewModels
 import mobileservices.demo.R
 import mobileservices.demo.arch.BaseActivity
 import mobileservices.demo.arch.exhaustive
 import mobileservices.demo.databinding.ActivityPlaybackdemoBinding
+import mobileservices.demo.databinding.ViewPlaybacksongBinding
+
 
 class PlaybackDemoActivity :
     BaseActivity<PlaybackDemoViewState, PlaybackDemoViewEffect, PlaybackDemoEvent, PlaybackDemoViewModel>() {
@@ -17,50 +23,104 @@ class PlaybackDemoActivity :
         super.onCreate(savedInstanceState)
         binding = ActivityPlaybackdemoBinding.inflate(layoutInflater)
 
-        binding.buttonPlayStop.setOnClickListener {
-            viewModel.process(PlaybackDemoEvent.PlayStopSongAtIndex(0))
-        }
+        binding.seekbarPlayerProgress.setOnTouchListener(OnTouchListener { _, _ -> true })
+        binding.textPlayerStatus.movementMethod = ScrollingMovementMethod()
 
         setContentView(binding.root)
+        initSongs(viewModel.getSongsList())
     }
 
     override fun renderViewState(viewState: PlaybackDemoViewState) {
         when (viewState) {
-            PlaybackDemoViewState.InitPlayer -> {
-                binding.buttonPlayStop.isEnabled = false
-                binding.textPlayerStatus.text = getString(
-                    R.string.audioplayback_status,
+            is PlaybackDemoViewState.InitPlayer -> {
+                binding.textPlayerStatus.text =
                     getString(R.string.audioplayback_status_initializing)
-                )
             }
             PlaybackDemoViewState.PlayerReady -> {
-                binding.buttonPlayStop.isEnabled = true
-                binding.buttonPlayStop.setText(R.string.audioplayback_play)
-                binding.textPlayerStatus.text = getString(
-                    R.string.audioplayback_status,
-                    getString(R.string.audioplayback_status_ready)
-                )
+                binding.textPlayerStatus.text = getString(R.string.audioplayback_status_ready)
+                binding.seekbarPlayerProgress.progress = 0
             }
             is PlaybackDemoViewState.PlayerInitError -> {
-                binding.buttonPlayStop.isEnabled = false
-                binding.textPlayerStatus.text = getString(
-                    R.string.audioplayback_status,
+                binding.textPlayerStatus.text =
                     getString(R.string.audioplayback_status_error, viewState.exception.toString())
-                )
             }
-            is PlaybackDemoViewState.PlayingSongAtIndex -> {
-                binding.buttonPlayStop.isEnabled = true
+            is PlaybackDemoViewState.Playing -> {
                 binding.textPlayerStatus.text = getString(
-                    R.string.audioplayback_status,
-                    getString(R.string.audioplayback_status_playing, viewState.title)
+                    R.string.audioplayback_status_playingIssued,
+                    viewState.song.title,
+                    viewState.song.artist,
+                    viewState.quality.description
                 )
-                binding.buttonPlayStop.setText(R.string.audioplayback_stop)
             }
         }.exhaustive
     }
 
     override fun renderViewEffect(viewEffect: PlaybackDemoViewEffect) {
-        TODO("Not yet implemented")
+        when (viewEffect) {
+            PlaybackDemoViewEffect.ErrorPlayerNotReady -> getString(R.string.audioplayback_status_notready)
+            is PlaybackDemoViewEffect.PlayerStateChanged -> {
+                when (viewEffect.playerState) {
+                    is PlaybackRepository.PlayerState.Buffering -> getString(
+                        R.string.audioplayback_status_buffering,
+                        viewEffect.playerState.progressInPercentage
+                    )
+                    PlaybackRepository.PlayerState.Stopped -> getString(R.string.audioplayback_status_stopped)
+                    PlaybackRepository.PlayerState.StoppedAndBuffering -> getString(R.string.audioplayback_status_stoppedAndBuffering)
+                    PlaybackRepository.PlayerState.Playing -> getString(R.string.audioplayback_status_playing)
+                    PlaybackRepository.PlayerState.PlayingAndBuffering -> getString(R.string.audioplayback_status_playingAndBuffering)
+                    is PlaybackRepository.PlayerState.PlayingProgress -> null
+                    PlaybackRepository.PlayerState.Completed -> getString(R.string.audioplayback_status_completed)
+                    is PlaybackRepository.PlayerState.Error -> getString(
+                        R.string.audioplayback_status_error,
+                        viewEffect.playerState.errorCode.toString()
+                    )
+                    is PlaybackRepository.PlayerState.SongChanged -> getString(
+                        R.string.audioplayback_status_songChanged,
+                        viewEffect.playerState.title
+                    )
+                }
+            }
+            is PlaybackDemoViewEffect.PlayerProgressUpdate -> {
+                binding.seekbarPlayerProgress.progress = viewEffect.progressPercentage.toInt()
+                null
+            }
+        }?.let { binding.textPlayerStatus.append("\n$it") }
+    }
+
+    private fun initSongs(songs: List<SongsRepository.Song>) {
+        for (song in songs) {
+            val songLayoutBinding = ViewPlaybacksongBinding.inflate(layoutInflater)
+
+            songLayoutBinding.textPlaybackSongDetails.text = getString(
+                R.string.audioplayback_song_title,
+                song.title,
+                song.artist,
+                song.interpretation,
+                song.album
+            )
+
+            for (qualityToPathPair in song.qualityToPath) {
+                val (songQuality, _) = qualityToPathPair
+                val playSongButton = Button(this).apply {
+                    text = songQuality.toString()
+                    setOnClickListener {
+                        viewModel.process(PlaybackDemoEvent.Play(song, songQuality))
+                    }
+                    isDuplicateParentStateEnabled = true
+                }
+                songLayoutBinding.layoutPlaybackSong.addView(
+                    playSongButton,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+
+            binding.layoutPlaybackSongs.addView(
+                songLayoutBinding.root,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
     }
 
 }

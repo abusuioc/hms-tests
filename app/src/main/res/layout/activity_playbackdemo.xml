@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_playback_songs"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:layout_height="match_parent">
+    android:padding="10dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/audioplayback_play"
+        android:text="@string/audioplayback_player_status"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/text_player_status"
-        android:layout_marginBottom="10dp"/>
-    <Button
         android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="bottom"
+        android:maxLines="6"
+        tools:text="status1\nstatus2" />
+
+    <SeekBar
+        android:id="@+id/seekbar_player_progress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/audioplayback_play"
-        tools:text="Play/Stop"
-        android:id="@+id/button_play_stop"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:max="100"
+        android:min="0"
+        android:progress="0" />
 
 </LinearLayout>
