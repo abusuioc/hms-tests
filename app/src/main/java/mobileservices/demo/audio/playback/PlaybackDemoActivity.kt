@@ -108,7 +108,7 @@ class PlaybackDemoActivity :
                     }
                     isDuplicateParentStateEnabled = true
                 }
-                audioTrackLayoutBinding.layoutPlaybackAudiotrack.addView(
+                audioTrackLayoutBinding.layoutPlaybackAudiotrackQuality.addView(
                     playButton,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
