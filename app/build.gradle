@@ -51,8 +51,8 @@ dependencies {
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'com.google.android:flexbox:2.0.1'
 
-    implementation 'com.github.abusuioc:hms-gms-wrapper-location:1.0-beta-3'
-    implementation 'com.github.abusuioc:MapsWrapper:1.1.5'
+    implementation 'com.github.abusuioc:hms-gms-wrapper-location:1.0-beta-5'
+    implementation 'com.github.franalma:MapsWrapper:1.1.10'
     implementation 'com.github.abusuioc:hms-agc-drm-license-check:2.5.2.300'
 
     implementation 'com.huawei.hms:audiokit-player:1.0.0.302'
